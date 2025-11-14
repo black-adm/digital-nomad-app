@@ -1,44 +1,15 @@
-import { StyleSheet, Text, View } from "react-native";
-
-import { Link, useRouter } from "expo-router";
+import { useTheme } from "@shopify/restyle";
+import { Box } from "../../../src/components/Box";
+import { Text } from "../../../src/components/Text";
 
 export default function HomeScreen() {
-  const router = useRouter();
+  const { colors } = useTheme();
 
   return (
-    <View>
-      <Link
-        href={{
-          pathname: "/city-details/[id]",
-          params: { id: 7 },
-        }}
-        asChild
-      >
-        <Text>Navegar para detalhes</Text>
-      </Link>
-
-      <Text onPress={() => router.navigate("/city-details/8")}>
-        Navegar com o router
+    <Box flex={1} backgroundColor="mainBackground">
+      <Text marginTop="xl" color="text">
+        Tema atual {colors.mainBackground}
       </Text>
-    </View>
+    </Box>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: "absolute",
-  },
-});
